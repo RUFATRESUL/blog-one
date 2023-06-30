@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block main %}
+{% static 'img/contact-bg.jpg' as contact_bg %}
+{% include 'banner/banner.html' with banner_image=contact_bg banner_title='Login Page' banner_description='This is a Login Page'%}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 bg-light border border-dark p-3">
+            <div class="row text-center">
+                <div>
+                    <h2>
+                        LOGIN
+                    </h2>
+                </div>
+                {% if html_valid %}
+                <h1 class="h4 text-danger">Username or password incorrect</h1>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock main %}
